@@ -46,7 +46,7 @@ function userKey(fid: number): string {
 }
 
 export async function getUserState(fid: number): Promise<UserState> {
-  const raw = await data.get(userKey(fid)) as UserState | null;
+  const raw = await data.get(userKey(fid)) as unknown as UserState | null;
   if (raw) return raw;
   return {
     balance: STARTING_BALANCE,
@@ -64,7 +64,7 @@ export async function getUserState(fid: number): Promise<UserState> {
 }
 
 export async function saveUserState(fid: number, state: UserState): Promise<void> {
-  await data.set(userKey(fid), state);
+  await data.set(userKey(fid), state as unknown as Record<string, unknown>);
 }
 
 export async function applySpinResult(
@@ -131,7 +131,7 @@ export function isDailyAvailable(state: UserState): boolean {
 const GLOBAL_KEY = "global";
 
 export async function getGlobalState(): Promise<GlobalState> {
-  const raw = await data.get(GLOBAL_KEY) as GlobalState | null;
+  const raw = await data.get(GLOBAL_KEY) as unknown as GlobalState | null;
   if (raw) return raw;
   return {
     jackpotPool: JACKPOT_POOL_SEED,
@@ -141,7 +141,7 @@ export async function getGlobalState(): Promise<GlobalState> {
 }
 
 export async function saveGlobalState(g: GlobalState): Promise<void> {
-  await data.set(GLOBAL_KEY, g);
+  await data.set(GLOBAL_KEY, g as unknown as Record<string, unknown>);
 }
 
 export async function addWin(

@@ -11,7 +11,9 @@ import {
 import { buildSnapUI, jackpotEffects } from "./ui.js";
 
 const BASE_URL =
-  process.env.SNAP_PUBLIC_BASE_URL ?? "http://localhost:3000";
+  (typeof process !== "undefined" && process.env.SNAP_PUBLIC_BASE_URL) 
+    ? process.env.SNAP_PUBLIC_BASE_URL 
+    : "http://localhost:3000";
 
 const app = new Hono();
 
