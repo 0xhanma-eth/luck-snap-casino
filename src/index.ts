@@ -1,6 +1,6 @@
+import { Hono } from "hono";
 import { registerSnapHandler } from "@farcaster/snap-hono";
-import { spin } from "./game.js";
-import { BET_AMOUNT, MAX_BET_AMOUNT } from "./game.js";
+import { spin, BET_AMOUNT, MAX_BET_AMOUNT } from "./game.js";
 import {
   getUserState,
   getGlobalState,
@@ -13,7 +13,9 @@ import { buildSnapUI, jackpotEffects } from "./ui.js";
 const BASE_URL =
   process.env.SNAP_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
-export default registerSnapHandler({
+const app = new Hono();
+
+registerSnapHandler(app, {
   title: "LUCK Snap Casino",
   description: "A viral slot machine in your feed. Spin. Chase the jackpot.",
   theme: { accent: "amber" },
@@ -74,3 +76,5 @@ export default registerSnapHandler({
     return response;
   },
 });
+
+export default app;
