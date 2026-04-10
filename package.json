@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "SKIP_JFS_VERIFICATION=true tsx watch src/server.ts",
     "build": "tsc --noEmit",
-    "start": "tsx src/server.ts"
+    "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@farcaster/snap-hono": "^0.4.0",
-    "@farcaster/snap-turso": "^0.4.0",
+    "@farcaster/snap-hono": "^1.5.12",
+    "@farcaster/snap-turso": "^1.0.21",
     "@noble/curves": "^2.0.0",
     "hono": "^4.4.0"
   },
