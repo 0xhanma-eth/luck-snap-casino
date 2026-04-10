@@ -65,7 +65,7 @@ registerSnapHandler(app, async (ctx) => {
     version: "1.0" as const,
     theme: { accent: "amber" as const },
     ui,
-    ...(result?.kind === "jackpot" ? { effects: ["confetti"] as const } : {}),
+    ...(result?.kind === "jackpot" ? { effects: ["confetti"] as Array<"confetti"> } : {}),
   };
 
   return response;
