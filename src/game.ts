@@ -5,6 +5,8 @@
 // ──────────────────────────────────────────────────────────────────────────────
 
 export type Symbol = "🍒" | "💎" | "7️⃣" | "🍩" | "⭐" | "🔥";
+export const BET_AMOUNT = 1;
+export const MAX_BET_AMOUNT = 10;
 export type OutcomeKind = "jackpot" | "bigwin" | "smallwin" | "loss";
 
 export interface SpinResult {
