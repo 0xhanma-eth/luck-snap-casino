@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "title": "🎰 LUCK SNAP CASINO",
+  "ui": {
+    "root": {
+      "type": "box",
+      "props": { "direction": "vertical", "gap": "sm" },
+      "children": [
+        "title", "subtitle", "divider1",
+        "balance", "jackpot_pool", "pool_bar", "streak", "daily_status",
+        "divider2",
+        "outcome_header", "reels", "flavor",
+        "divider3",
+        "btn_spin", "btn_max_bet", "btn_share", "btn_daily",
+        "divider4",
+        "lb_title", "leaderboard",
+        "ticker_title", "ticker"
+      ]
+    },
+    "elements": {
+      "title": {
+        "type": "text",
+        "props": { "label": "🎰 LUCK SNAP CASINO", "weight": "bold", "size": "lg" }
+      },
+      "subtitle": {
+        "type": "text",
+        "props": { "label": "tap spin. chase jackpot.", "size": "sm" }
+      },
+      "divider1": { "type": "separator", "props": {} },
+      "balance": {
+        "type": "text",
+        "props": { "label": "💰 Balance: 42 credits", "weight": "bold", "color": "green" }
+      },
+      "jackpot_pool": {
+        "type": "text",
+        "props": { "label": "💎 Jackpot Pool: 1087 credits", "size": "sm" }
+      },
+      "pool_bar": {
+        "type": "progress_bar",
+        "props": { "value": 72, "color": "amber" }
+      },
+      "streak": {
+        "type": "text",
+        "props": { "label": "🔥🔥 4 win streak", "size": "sm" }
+      },
+      "daily_status": {
+        "type": "text",
+        "props": { "label": "🎁 Daily spin: READY", "size": "sm", "color": "green" }
+      },
+      "divider2": { "type": "separator", "props": {} },
+      "outcome_header": {
+        "type": "text",
+        "props": { "label": "💎  JACKPOT  💎", "weight": "bold", "size": "lg", "align": "center" }
+      },
+      "reels": {
+        "type": "text",
+        "props": { "label": "💎  💎  💎", "size": "xl", "align": "center", "weight": "bold" }
+      },
+      "flavor": {
+        "type": "text",
+        "props": {
+          "label": "GIGA JACKPOT 💎🔥 WE ARE SO BACK",
+          "size": "sm",
+          "align": "center",
+          "color": "amber"
+        }
+      },
+      "divider3": { "type": "separator", "props": {} },
+      "btn_spin": {
+        "type": "button",
+        "props": { "label": "🎰 SPIN  (−1 credit)", "variant": "primary" },
+        "on": {
+          "press": {
+            "action": "submit",
+            "params": { "action": "spin", "bet": "1" },
+            "target": "https://luck-snap-casino.host.neynar.app"
+          }
+        }
+      },
+      "btn_max_bet": {
+        "type": "button",
+        "props": { "label": "💣 MAX BET  (−10 credits)", "variant": "secondary" },
+        "on": {
+          "press": {
+            "action": "submit",
+            "params": { "action": "spin", "bet": "10" },
+            "target": "https://luck-snap-casino.host.neynar.app"
+          }
+        }
+      },
+      "btn_share": {
+        "type": "button",
+        "props": { "label": "📣 SHARE WIN", "variant": "secondary" },
+        "on": {
+          "press": {
+            "action": "compose_cast",
+            "params": {
+              "text": "JUST HIT 50x ON LUCK SNAP CASINO 🎰🔥\n💎  💎  💎\ncome rekt me → luck-snap-casino.host.neynar.app"
+            }
+          }
+        }
+      },
+      "btn_daily": {
+        "type": "button",
+        "props": { "label": "🎁 CLAIM DAILY (+10 credits)", "variant": "primary" },
+        "on": {
+          "press": {
+            "action": "submit",
+            "params": { "action": "daily" },
+            "target": "https://luck-snap-casino.host.neynar.app"
+          }
+        }
+      },
+      "divider4": { "type": "separator", "props": {} },
+      "lb_title": {
+        "type": "text",
+        "props": { "label": "🏆 Top Winners", "weight": "bold", "size": "sm" }
+      },
+      "leaderboard": {
+        "type": "bar_chart",
+        "props": {
+          "items": [
+            { "label": "fid:12345", "value": 500, "caption": "#1 — 500 credits" },
+            { "label": "fid:99812", "value": 210, "caption": "#2 — 210 credits" },
+            { "label": "fid:44401", "value": 85,  "caption": "#3 — 85 credits"  }
+          ]
+        }
+      },
+      "ticker_title": {
+        "type": "text",
+        "props": { "label": "📡 Recent Wins", "size": "sm", "weight": "bold" }
+      },
+      "ticker": {
+        "type": "text",
+        "props": {
+          "label": "fid:12345 +500 (jackpot)  ·  fid:77712 +50 (bigwin)  ·  fid:33310 +6 (smallwin)",
+          "size": "sm",
+          "color": "secondary"
+        }
+      }
+    }
+  },
+  "effects": [{ "type": "confetti" }]
+}

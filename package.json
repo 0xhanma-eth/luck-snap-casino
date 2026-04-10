@@ -1,0 +1,21 @@
+{
+  "name": "luck-snap-casino",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "SKIP_JFS_VERIFICATION=true tsx watch src/server.ts",
+    "build": "tsc --noEmit",
+    "start": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@farcaster/snap-hono": "^0.4.0",
+    "@farcaster/snap-turso": "^0.4.0",
+    "@noble/curves": "^2.0.0",
+    "hono": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}
