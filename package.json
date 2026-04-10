@@ -11,6 +11,6 @@
     "@noble/curves": "2.0.0",
     "hono": "4.4.0",
     "tsx": "4.19.0",
-    "typescript": "5.5.0"
+    "typescript": "5.8.3"
   }
 }
