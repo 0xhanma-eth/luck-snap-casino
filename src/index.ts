@@ -15,9 +15,12 @@ const BASE_URL = "https://luck-snap-casino.vercel.app";
 const app = new Hono();
 
 registerSnapHandler(app, async (ctx) => {
-  const fid = ctx.user?.fid ?? 0;
-  const action = ctx.inputs?.action ?? "view";
-  const betStr = ctx.inputs?.bet ?? "1";
+  const action_type = ctx.action.type;
+  const fid = action_type === "post" ? ctx.action.fid : 0;
+  const inputs = action_type === "post" ? ctx.action.inputs : {};
+
+  const action = (inputs?.action as string) ?? "view";
+  const betStr = (inputs?.bet as string) ?? "1";
   const bet = parseInt(betStr, 10) || BET_AMOUNT;
   const isMaxBet = bet >= MAX_BET_AMOUNT;
 
@@ -58,12 +61,14 @@ registerSnapHandler(app, async (ctx) => {
     feedbackMessage,
   });
 
-  const response: Record<string, unknown> = {
-    version: "1.0",
-    title: "🎰 LUCK SNAP CASINO",
+  const response = {
+    version: "1.0" as const,
+    theme: { accent: "amber" as const },
     ui,
+    ...(result?.kind === "jackpot" ? { effects: ["confetti"] as const } : {}),
   };
 
-  if (result?.kind === "jackpot") {
-    response.effects = jackpotEffects();
-  }
+  return response;
+});
+
+export default app;
